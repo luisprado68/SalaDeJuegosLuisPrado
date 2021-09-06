@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
-
+import { FormGroup,FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,8 +10,13 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginForm = new FormGroup({
+    email:new FormControl(''),
+    password: new FormControl(''),
+  })
   constructor(private rutas:Router,
-              private usuario:UsuarioService) { }
+              private usuario:UsuarioService,
+              private authSvc:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +28,20 @@ export class LoginComponent implements OnInit {
     // setTimeout(()=>{
     //   this.rutas.navigate(['home']);
     // },2000)
+  }
+  async loguearse(){
+
+    const {email,password} = this.loginForm.value;
+    try {
+      const usuario = await this.authSvc.login(email,password);
+      if(usuario){
+        this.rutas.navigate(['/home']);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
+
   }
 
 }

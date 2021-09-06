@@ -52,9 +52,19 @@
   margin-right: .5rem;
   text-decoration: none
 }
+.header-blue .navbar .navbar-collapse span .logout {
+  color: #fff;
+  margin-right: .5rem;
+  text-decoration: none
+}
 
 .header-blue .navbar .navbar-collapse span .login:hover {
-  color: #fff
+  color: #fff;
+  
+}
+.header-blue .navbar .navbar-collapse span .logout:hover {
+  color: #fff;
+  cursor: pointer;
 }
 
 .header-blue .navbar .navbar-toggler {

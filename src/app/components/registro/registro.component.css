@@ -329,7 +329,9 @@ input {
 .login100-form-btn:hover {
     background: #333333
 }
-
+.grisado:hover:not([disabled]){
+    background: #858585
+}
 .label-checkbox100::before {
     content: "\f00c";
     font-family: FontAwesome;
@@ -418,3 +420,14 @@ input {
     max-width: 50%;
 }
 }
+
+.alert-danger {
+    color: #721c24;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    margin-bottom: 5px;
+  }
+
+  .container-error-message {
+    padding: 3px;
+  }

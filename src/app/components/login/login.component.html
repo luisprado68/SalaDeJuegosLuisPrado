@@ -15,7 +15,8 @@
                                 <div> <a href="#" class="txt1"> Olvido su contraseña? </a> </div>
                             </div>
                             <div class="container-login100-form-btn p-t-25"> <button class="login100-form-btn" type="submit"> Login </button> </div>
-                            <div class="container-login100-form-btn p-t-25"> <button class="login100-form-btn bg-danger" [routerLink]="['/registro']"> No tengo una cuenta </button> </div>
+                            <div class="container-login100-form-btn p-t-25"> <button class="login100-form-btn bg-danger" (click)="loguearseGoogle()"><i class="fab fa-google"></i></button> </div>
+                            <div class="container-login100-form-btn p-t-25"> <button class="login100-form-btn bg-success" [routerLink]="['/registro']"> No tengo una cuenta </button> </div>
                         </form>
                     </div>
                 </div>

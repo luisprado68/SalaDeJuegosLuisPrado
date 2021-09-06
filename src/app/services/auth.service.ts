@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {first} from 'rxjs/operators';
-import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {User} from 'firebase/auth'
+import {GoogleAuthProvider, User} from 'firebase/auth'
 // You don't need to import firebase/app either since it's being imported above
 import 'firebase/auth';
 import { ToastrService } from 'ngx-toastr';
+import * as firebase from 'firebase/compat';
 
 
 @Injectable({
@@ -18,6 +18,19 @@ export class AuthService {
 
   error(){
     this.toastr.error("Ya existe una cuenta con el correo ingresado","Error");
+  }
+
+  async loginGoogle(){
+    let resultado = null;
+    try {
+       resultado = this.afAuth.signInWithPopup(new GoogleAuthProvider());
+      
+    } catch (error) {
+      console.log(error);
+    }
+    finally{
+      return resultado;
+    }
   }
   async login(email:string,password:string){
     let resultado = null;

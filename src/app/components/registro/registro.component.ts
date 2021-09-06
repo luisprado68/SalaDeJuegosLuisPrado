@@ -4,6 +4,8 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 
 
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -19,7 +21,16 @@ export class RegistroComponent implements OnInit {
     password: new FormControl('',[Validators.required,Validators.minLength(6)]),
   });
   constructor(private rutas:Router,
-              private authSvc:AuthService) { }
+              private authSvc:AuthService,
+              private toastr:ToastrService) { }
+
+  completar(){
+    this.toastr.warning("Porfavor complete los datos","Advertencia");
+  }
+  exito(){
+    this.toastr.success("Su cuenta se ha creado exitosamente","Correcto");
+  }
+  
   async registrarse(){
 
     if(this.registroForm.valid){
@@ -27,14 +38,24 @@ export class RegistroComponent implements OnInit {
       try {
         const usuario = await this.authSvc.registro(nombre,apellido,email,password);
         if(usuario){
+          this.exito();
+          const usuarioLogin = await this.authSvc.login(email,password);
+        if(usuarioLogin){
           this.rutas.navigate(['/home']);
+        }
+          
         }
       } catch (error) {
         console.log(error);
+        this.registroForm.reset();
       }
+      
     }else{
-      console.log("No valido");
+      
+      this.completar();
+      
     }
+    
    
     
     

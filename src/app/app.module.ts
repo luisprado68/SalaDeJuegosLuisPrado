@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireAuthModule} from '@angular/fire/compat/auth'
+//firesstore
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';

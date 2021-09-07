@@ -64,8 +64,6 @@ export class RegistroComponent implements OnInit {
   }
   
   
-  irLogin(){
-    this.rutas.navigate(['login']);
-  }
+  
 
 }

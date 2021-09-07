@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
-import { FormGroup,FormControl } from '@angular/forms';
+import { FormGroup,FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,36 +11,46 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   loginForm = new FormGroup({
-    email:new FormControl(''),
-    password: new FormControl(''),
+    email:new FormControl('',[Validators.required,Validators.minLength(11),Validators.pattern(this.emailPattern)]),
+    password: new FormControl('',[Validators.required,Validators.minLength(6)]),
   })
   constructor(private rutas:Router,
               private usuario:UsuarioService,
-              private authSvc:AuthService) { }
+              private authSvc:AuthService,
+              private toastr:ToastrService) { }
 
   ngOnInit(): void {
   }
-
-  public  irRegistro(){
-    //console.log("siguiente");
-    this.usuario.nombre="Luis Prado";
-    this.rutas.navigate(['registro']);
-    // setTimeout(()=>{
-    //   this.rutas.navigate(['home']);
-    // },2000)
+  error(){
+    this.toastr.error("No existe una cuenta con el correo ingresado","Error");
   }
+  completar(){
+    this.toastr.warning("Porfavor complete los datos","Advertencia");
+  }
+  
   async loguearse(){
-
-    const {email,password} = this.loginForm.value;
-    try {
-      const usuario = await this.authSvc.login(email,password);
-      if(usuario){
-        this.rutas.navigate(['/home']);
-      }
-    } catch (error) {
-      console.log(error);
+    if(this.loginForm.valid){
+          const {email,password} = this.loginForm.value;
+        try {
+          const usuario = await this.authSvc.login(email,password);
+          console.log(usuario);
+          if(usuario){
+            this.rutas.navigate(['/home']);
+          }
+          else{
+            this.error();
+          }
+        } catch (error) {
+          
+          console.log("error",error);
+        }
     }
+    else{
+        this.completar();
+    }
+    
     
 
   }

@@ -2,16 +2,17 @@
     background-color: #0e5399
 }
 
-.padding {
+.perfil .padding {
     padding: 3rem !important;
     height: 100vh;
+    width: 100%;
 }
 
-.user-card-full {
+.perfil .user-card-full {
     overflow: hidden
 }
 
-.card {
+.perfil .card {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
@@ -19,46 +20,46 @@
     margin-bottom: 30px
 }
 
-.m-r-0 {
+.perfil .m-r-0 {
     margin-right: 0px
 }
 
-.m-l-0 {
+.perfil .m-l-0 {
     margin-left: 0px
 }
 
-.user-card-full .user-profile {
+.perfil .user-card-full .user-profile {
     border-radius: 5px 0 0 5px
 }
 
-.bg-c-lite-green {
+.perfil .bg-c-lite-green {
     background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
     background: linear-gradient(to right, #ee5a6f, #f29263)
 }
 
-.user-profile {
+.perfil .user-profile {
     padding: 20px 0
 }
 
-.card-block {
+.perfil .card-block {
     padding: 1.25rem
 }
 
-.m-b-25 {
+.perfil .m-b-25 {
     margin-bottom: 25px
 }
 
-.img-radius {
+.perfil .img-radius {
     border-radius: 50%;
     width: 80%;
     
 }
 
-h6 {
+.perfil h6 {
     font-size: 14px
 }
 
-.card .card-block p {
+.perfil .card .card-block p {
     line-height: 25px
 }
 

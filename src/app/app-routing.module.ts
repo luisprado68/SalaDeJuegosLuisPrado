@@ -11,6 +11,9 @@ const routes: Routes = [
   },
   {path:'home',component:HomeComponent},
   {path:'perfil',component:PerfilComponent},
+  {path:'juegos',
+  loadChildren:()=> import('./juegos/juegos.module').then(m => m.JuegosModule)
+  },
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'**',component:ErrorComponent},
 ];

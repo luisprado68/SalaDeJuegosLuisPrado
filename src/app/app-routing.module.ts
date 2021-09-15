@@ -7,12 +7,14 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegistroComponent } from './auth/pages/registro/registro.component';
 
 const routes: Routes = [
+  
+  {path:'auth',
+  loadChildren:()=> import('./auth/auth.module').then(m => m.AuthModule)
+  },
   {path:'home',component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'registro',component:RegistroComponent},
   {path:'perfil',component:PerfilComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
-  {path:'**',component:ErrorComponent}
+  {path:'**',component:ErrorComponent},
 ];
 
 @NgModule({

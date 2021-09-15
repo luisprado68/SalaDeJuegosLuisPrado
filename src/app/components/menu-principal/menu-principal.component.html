@@ -14,8 +14,8 @@
                   </form><span *ngIf="usuario$ | async as usuario; else login"><span class="navbar-text" *ngIf="usuario"><a class="logout" (click)="salir()">Logout</a><a class="login" >{{usuario?.email }}</a></span><span *ngIf="!usuario"></span></span>
                   <ng-template #login>
                         <span class="navbar-text" >
-                            <a class="login" [routerLink]="['/login']">Ingreso</a>
-                            <a class="btn btn-light action-button" role="button" [routerLink]="['/registro']">Registro</a>
+                            <a class="login" [routerLink]="['/auth/login']">Ingreso</a>
+                            <a class="btn btn-light action-button" role="button" [routerLink]="['/auth/registro']">Registro</a>
                           </span>
                   </ng-template>
               </div>

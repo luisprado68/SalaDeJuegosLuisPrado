@@ -10,13 +10,13 @@ import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 //firesstore
 import {AngularFirestore} from '@angular/fire/compat/firestore';
 
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './auth/pages/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ErrorComponent } from './components/error/error.component';
 import { MenuPrincipalComponent } from './components/menu-principal/menu-principal.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { RegistroComponent } from './components/registro/registro.component';
+import { RegistroComponent } from './auth/pages/registro/registro.component';
 import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
